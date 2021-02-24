@@ -1,0 +1,30 @@
+.content{
+    width: 815px;
+    margin: 20px auto;
+}
+.blog{
+    background: #cccccc;
+    padding: 20px;
+    margin: 20px 0;
+}
+.blog-title,.blog-content,.post-time,.read-count{
+    margin: 20px 0;
+}
+.read-count{
+    margin-left: 100px;
+}
+#btn{
+    margin-top: 25px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background: #E2C3C3;
+    text-align: center;
+    line-height: 20px;
+    display: block;
+    width: 150px;
+    color: black;
+}
+.content a{
+    color: black;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
+    <div class="wrap">
+        <%- include('header')%>
+        <a id="btn" href="/blog/post">上传博文</a>
+        <div class="content">
+            
+                <%
+                      blogs.forEach(function(blog){   
+                %>
+                        <a href="/details">
+                            <div class="blog">
+                                <h3 class="blog-title"><%=blog.title%></h3>
+                                <p class="blog-content"><%=blog.content%></p>
+                                <div class="other-info">
+                                    <span class="post-time"><%=blog.post_time%></span>
+                                    <span class="read-count"><%=blog.read_count%>阅读量</span>
+                                </div>
+                            </div>
+                        </a>
+                <%
+                    })
+                %>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.content{
+    width: 650px;
+    background: #cccccc;
+    margin: 0 auto;
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px 0;
+}
+.content p{
+    margin: 20px 0;
+}
+#btn{
+    width: 100px;
+    height: 30px;
+    border: none;
+    background: #E2C3C3;
+}
