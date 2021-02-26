@@ -46,6 +46,7 @@ module.exports = {
             if (results.length > 0) {
                 //向session作用域中存放loginUser变量
                 ctx.session.username = user.username;
+                ctx.session.user_id = results[0].user_id;
                 //redirect重定向，他会将页面的地址重新定向到指定的路由
                 ctx.redirect('/');
             } else {

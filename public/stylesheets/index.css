@@ -1,11 +1,23 @@
-.content{
-    width: 815px;
-    margin: 20px auto;
+*{
+    padding: 0;
+    margin: 0;
 }
-.blog{
+.content{
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+}
+.blog-box{
+    height: 200px;
     background: #cccccc;
     padding: 20px;
     margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.blog-box:first-child{
+    margin-top: 0;
 }
 .blog-title,.blog-content,.post-time,.read-count{
     margin: 20px 0;
@@ -14,7 +26,7 @@
     margin-left: 100px;
 }
 #btn{
-    margin-top: 25px;
+    margin-top: 20px;
     padding: 10px;
     font-size: 15px;
     border: none;
@@ -27,4 +39,15 @@
 }
 .content a{
     color: black;
+}
+.sidebar{
+    width: 220px;
+    
+}
+.sidebar h3,ul,li{
+    margin: 10px 0;
+}
+.blog-list{
+    flex: 1;
+    margin-right: 30px;
 }

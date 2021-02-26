@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/blog-detail.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <%- include('header')%>
+            <div class="content">
+                <div class="blog-info">
+                    <h3 class="title">
+                        <%=blog[0].title%>
+                    </h3>
+                    <div class="other-info">
+                        <span class="post-time">
+                            <%=blog[0].post_time%>
+                        </span>
+                        <span class="read-count">
+                            <%=blog[0].read_count%>阅读
+                        </span>
+                    </div>
+                    <div class="blog-content">
+                        <%=blog[0].content%>
+                    </div>
+                </div>
+                <div class="comment-info">
+                    <div class="comment-title">
+                        评论
+                        <button id="btn-post-comment">发表评论</button>
+                    </div>
+                    <div class="comment-input">
+                        <!-- <input type="hidden" id="userId" value="<%=userId%>"> -->
+                        <textarea name="content1" cols="108" rows="6" id="content1"></textarea>
+                        <button id="btn-comment">评论</button>
+                    </div>
+                    <div class="comment-list">
+                        <% comment.forEach(function(com){ %>
+                            <div class="comment-box">
+                                <span>评论内容：</span>
+                                <div class="comment-content">
+                                    <%=com.content%>
+                                </div>
+                                <div class="other-info">
+                                    <span class="comment-author">
+                                        <%=com.username%>
+                                    </span>
+                                    <span class="create-time">
+                                        <%=com.create_time%>
+                                    </span>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script>
+        $('#btn-post-comment').on('click', function () {
+            $('.comment-input').show();
+        });
+        $('#btn-comment').on('click', function () {
+            let userId = $('#userId').val();
+            // if (userId) {                               //这种方式前端登陆验证不安全
+            //     let content = $('#content1').val();
+            //     $.post('/blog/postComment', {
+            //         content,
+            //         userId,
+            //     });
+            // }else{
+            //     alert('请先登录')
+            // }
+            
+            let content = $('#content1').val();
+            let username = $('.username').text();
+            let createTime = new Date();
+            $.post('/blog/postComment', {
+                content,
+                blog_id: <%=blog[0].blog_id%>,
+                },function(res){
+                    if(res === 'success'){
+
+                        let html = `<div class="comment-box">
+                                <span>评论内容：</span>
+                                <div class="comment-content">
+                                    ${content}
+                                </div>
+                                <div class="other-info">
+                                    <span class="comment-author">
+                                        ${username}
+                                    </span>
+                                    <span class="create-time">
+                                        ${createTime}
+                                    </span>
+                                </div>
+                            </div>`;
+                            $('.comment-list').prepend(html);
+                    }else if(res === '未登录！'){
+                        alert('您未登录，请先登录。');
+                        location.href = '/user/login';
+                    }
+                });
+
+        })
+    </script>
+</body>
+
+</html>

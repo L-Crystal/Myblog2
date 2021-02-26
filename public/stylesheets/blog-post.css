@@ -1,0 +1,31 @@
+.content{
+    text-align: left;
+    width: 810px;
+    height: 520px;
+    background: #eceaea;
+    margin: 20px auto;
+    padding: 20px;
+    
+}
+.content h3{
+    text-align: center;
+}
+.content p{
+    margin-top: 30px;
+}
+.content input,button,textarea{
+    border: none;
+}
+#btn{
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background: #E2C3C3;
+    text-align: center;
+    line-height: 20px;
+    display: block;
+    width: 150px;
+    color: black;
+}
+

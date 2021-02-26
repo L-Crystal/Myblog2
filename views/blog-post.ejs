@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表文章</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/blog-post.css">
+</head>
+<body>
+    <div class="wrap">
+        <%- include('header')%>
+        <div class="content">
+            <h3>发表文章</h3>
+            <form action="/blog/post" method="post">
+                <p>
+                    分类：<select name="cate_id" >
+                        <%
+                            categories.forEach(function(cate){
+
+                        %>
+                                <option value="<%=cate.cate_id%>"><%=cate.cate_name%></option>
+                        <%
+                            });
+                        %>
+                    </select>
+                </p>
+                <p>
+                    标题：<input type="text" name="title">
+                </p>
+                <p class="textarea" style="width:700px;line-height:40px;">
+                    <span style="float:left">内容：</span><textarea name="content" cols="70" rows="10"></textarea>
+                </p>
+                <p>
+                    <button type="submit" id="btn">上传</button>
+                </p>
+            </form>
+        </div>
+            
+    </div>
+</body>
+</html>

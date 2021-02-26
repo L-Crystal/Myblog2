@@ -11,19 +11,20 @@
 <body>
     <div class="wrap">
         <%- include('header')%>
-        <a id="btn" href="/blog/post">上传博文</a>
+        
         <div class="content">
-            
+            <div class="blog-list">
                 <%
                       blogs.forEach(function(blog){   
                 %>
-                        <a href="/details">
-                            <div class="blog">
+                        <a href="/blog/detail/<%=blog.blog_id%>">
+                            <div class="blog-box">
                                 <h3 class="blog-title"><%=blog.title%></h3>
                                 <p class="blog-content"><%=blog.content%></p>
                                 <div class="other-info">
                                     <span class="post-time"><%=blog.post_time%></span>
                                     <span class="read-count"><%=blog.read_count%>阅读量</span>
+                                    <span class="user-id"><%=blog.username%></span>
                                 </div>
                             </div>
                         </a>
@@ -31,6 +32,26 @@
                     })
                 %>
             </div>
+            <div class="sidebar">
+                <div class="btns">
+                    <a id="btn" href="/blog/post">上传博文</a>
+                </div>
+                <div class="blog-cates">
+                    <h3>文章分类</h3>
+                    <ul class="category-list">
+                        <li><a href="/">所有</a></li>
+                        <%
+                            categories.forEach(function(category){
+                        %>
+                            <li><a href="/?cateId=<%=category.cate_id%>"><%=category.cate_name%></a></li>
+                        <%
+                            })
+                        %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            
     </div>
 </body>
 </html>
